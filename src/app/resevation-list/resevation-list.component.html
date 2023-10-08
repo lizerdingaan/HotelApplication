@@ -1,1 +1,15 @@
-<p>resevation-list works!</p>
+<h2>Resevation List</h2>
+
+<ul *ngIf="resevations.length; else noResevation">
+  <li *ngFor="let resevation of resevations">
+    Guest: {{resevation.guestName}} <br>
+    Email: {{resevation.guestEmail}} <br>
+    Room No.: {{resevation.roomNumber}} <br>
+    Check-In: {{resevation.checkInDate}} <br>
+    Check-Out: {{resevation.checkOutDate}} <br>
+  </li>
+</ul>
+
+<ng-template #noResevation>
+  <p>No Resevations available.</p>
+</ng-template>
