@@ -9,6 +9,11 @@ export class ResevationService {
 
   private resevations: Resevation[] = [];
 
+  constructor() {
+    let savedResevations = localStorage.getItem("resevations");
+    this.resevations = savedResevations ? JSON.parse(savedResevations) : [];
+  }
+
   // CRUD
 
   getResevations(): Resevation[] {
@@ -20,16 +25,21 @@ export class ResevationService {
   }
 
   addResevation(resevation: Resevation) {
-    this.resevations.push(resevation)
+    this.resevations.push(resevation);
+    localStorage.setItem('resevations', JSON.stringify(this.resevations));
   }
 
   deleteResevation(id: string) {
     let index = this.resevations.findIndex(res => res.id === id);
     this.resevations.splice(index, 1);
+    localStorage.setItem('resevations', JSON.stringify(this.resevations));
+
   }
 
   updateResevation(updatedResevation: Resevation) {
     let index = this.resevations.findIndex(res => res.id === updatedResevation.id);
     this.resevations[index] = updatedResevation;
+    localStorage.setItem('resevations', JSON.stringify(this.resevations));
+
   }
 }

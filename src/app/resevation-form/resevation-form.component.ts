@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {ResevationService} from "../resevation/resevation.service";
+import {Resevation} from "../models/resevation";
 
 @Component({
   selector: 'app-resevation-form',
@@ -10,7 +12,8 @@ export class ResevationFormComponent implements OnInit {
 
   resevationForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private resevationService: ResevationService) {
   }
 
   ngOnInit(): void {
@@ -25,6 +28,10 @@ export class ResevationFormComponent implements OnInit {
 
 
   onSubmit(){
+    if(this.resevationForm.valid){
+      let resevation: Resevation = this.resevationForm.value;
+      this.resevationService.addResevation(resevation);
+    }
 
   }
 
