@@ -17,4 +17,8 @@ export class ResevationListComponent implements OnInit{
     this.resevations = this.resevationService.getResevations();
   }
 
+  deleteResevation(id: string) {
+    this.resevationService.deleteResevation(id);
+  }
+
 }

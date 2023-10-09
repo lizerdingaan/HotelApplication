@@ -13,6 +13,9 @@ const routes: Routes = [
   },
   {path: 'new',
   component: ResevationFormComponent
+  },
+  {path: 'edit/:id',
+  component: ResevationFormComponent
   }
 ];
 

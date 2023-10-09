@@ -1,14 +1,32 @@
-<h2>Resevation List</h2>
+<app-home></app-home>
 
-<ul *ngIf="resevations.length; else noResevation">
-  <li *ngFor="let resevation of resevations">
-    Guest: {{resevation.guestName}} <br>
-    Email: {{resevation.guestEmail}} <br>
-    Room No.: {{resevation.roomNumber}} <br>
-    Check-In: {{resevation.checkInDate}} <br>
-    Check-Out: {{resevation.checkOutDate}} <br>
-  </li>
-</ul>
+<h3 class="mt-5 mb-3">Resevation List</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Guest Name</th>
+      <th>Guest Email</th>
+      <th>Room No.</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let resevation of resevations">
+      <td>{{resevation.guestName}}</td>
+      <td>{{resevation.guestEmail}}</td>
+      <td>{{resevation.roomNumber}}</td>
+      <td>{{resevation.checkInDate}}</td>
+      <td>{{resevation.checkOutDate}}</td>
+      <td>
+        <button class="btn btn-sm btn-danger mx-1" (click)="deleteResevation(resevation.id)">Delete Resevation</button>
+        <button class="btn btn-sm btn-secondary mx-1" [routerLink]="['/edit', resevation.id]">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 <ng-template #noResevation>
   <p>No Resevations available.</p>

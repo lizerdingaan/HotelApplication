@@ -1,45 +1,58 @@
+<app-home></app-home>
+
+<h3 class="mt-5 mb-3">Create a new Resevation</h3>
+
 <form [formGroup]="resevationForm" (ngSubmit)="onSubmit()">
 
-  <div>
-    <label>Check-In Date:</label>
-    <input type="date" formControlName="checkInDate">
-    <div *ngIf="resevationForm.get('checkInDate')?.invalid && resevationForm.get('checkInDate')?.touched">
-      Check In Date is required.
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Check-In Date:</label>
+      <input class="form-control" type="date" formControlName="checkInDate">
+      <small class="text-danger" *ngIf="resevationForm.get('checkInDate')?.invalid && resevationForm.get('checkInDate')?.touched">
+        Check In Date is required.
+      </small>
+    </div>
+
+    <div class="col">
+      <label class="form-label">Check-Out Date:</label>
+      <input class="form-control" type="date" formControlName="checkOutDate">
+      <small class="text-danger" *ngIf="resevationForm.get('checkOutDate')?.invalid && resevationForm.get('checkOutDate')?.touched">
+        Check Out Date is required.
+      </small>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Guest Email:</label>
+      <input class="form-control" type="email" formControlName="guestEmail">
+      <small class="text-danger" *ngIf="resevationForm.get('guestEmail')?.invalid && resevationForm.get('guestEmail')?.touched">
+        Guest Email is required.
+      </small>
+    </div>
+
+    <div class="col">
+      <label class="form-label">Guest Name:</label>
+      <input class="form-control" formControlName="guestName">
+      <small class="text-danger" *ngIf="resevationForm.get('guestName')?.invalid && resevationForm.get('guestName')?.touched">
+        Guest Name is required.
+      </small>
     </div>
   </div>
 
-  <div>
-    <label>Check-Out Date:</label>
-    <input type="date" formControlName="checkOutDate">
-    <div *ngIf="resevationForm.get('checkOutDate')?.invalid && resevationForm.get('checkOutDate')?.touched">
-      Check Out Date is required.
+  <div class="row mb-3">
+    <div class="col-6">
+      <label class="form-label">Room Number:</label>
+      <input class="form-control" type="number" formControlName="roomNumber">
+      <small class="text-danger" *ngIf="resevationForm.get('roomNumber')?.invalid && resevationForm.get('roomNumber')?.touched">
+        Room Number is required.
+      </small>
     </div>
   </div>
 
-  <div>
-    <label>Guest Name:</label>
-    <input formControlName="guestName">
-    <div *ngIf="resevationForm.get('guestName')?.invalid && resevationForm.get('guestName')?.touched">
-      Guest Name is required.
-    </div>
-  </div>
 
-  <div>
-    <label>Guest Email:</label>
-    <input type="email" formControlName="guestEmail">
-    <div *ngIf="resevationForm.get('guestEmail')?.invalid && resevationForm.get('guestEmail')?.touched">
-      Guest Email is required.
-    </div>
-  </div>
 
-  <div>
-    <label>Room Number:</label>
-    <input type="number" formControlName="roomNumber">
-    <div *ngIf="resevationForm.get('roomNumber')?.invalid && resevationForm.get('roomNumber')?.touched">
-      Room Number is required.
-    </div>
-  </div>
-
-  <button type="submit" [disabled]="resevationForm.invalid">Submit</button>
+  <button class="btn btn-primary" type="submit" [disabled]="resevationForm.invalid">Submit</button>
 
 </form>

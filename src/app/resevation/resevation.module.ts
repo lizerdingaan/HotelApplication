@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ResevationFormComponent } from '../resevation-form/resevation-form.component';
 import { ResevationListComponent } from '../resevation-list/resevation-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {HomeModule} from "../home/home.module";
 
 
 
@@ -14,7 +16,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
+    HomeModule
   ]
 })
 export class ResevationModule { }

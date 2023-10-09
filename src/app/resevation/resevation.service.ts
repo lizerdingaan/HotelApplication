@@ -25,6 +25,8 @@ export class ResevationService {
   }
 
   addResevation(resevation: Resevation) {
+
+    resevation.id = Date.now().toString();
     this.resevations.push(resevation);
     localStorage.setItem('resevations', JSON.stringify(this.resevations));
   }
@@ -36,7 +38,7 @@ export class ResevationService {
 
   }
 
-  updateResevation(updatedResevation: Resevation) {
+  updateResevation(id:string, updatedResevation: Resevation) {
     let index = this.resevations.findIndex(res => res.id === updatedResevation.id);
     this.resevations[index] = updatedResevation;
     localStorage.setItem('resevations', JSON.stringify(this.resevations));
